@@ -279,16 +279,22 @@
 - NextJs 프레임워크 규칙에 따라 pages 또는 app 폴더 내부에 생성한다.
 - 네이밍은 kebab case를 사용한다.
 ### 4-2. Container
-- 모든 비즈니스 로직을 처리한다.
-- hook 함수들과 handler 이벤트를 정의한다.
-- 화면의 기본 마크업이 들어간다.
+- 데이터 처리, 상태 관리, API 호출, 핸들러 이벤트 등과 같은 모든 비즈니스 로직을 처리한다.
+- 파일명은 '명사 + Container'로 한다.
+- 예시) 사용자 목록을 다루는 Container라면 'UserListContainer'로 명명한다.
+- 화면의 기본 마크업과 Component로 구성된다.
+- 특정 영역에 대한 디자인이 들어간 코드를 최대한 Component 영역으로 분리한다.
 ### 4-3. Component
 - UserCard, Profile과 같이 디자인이 들어가는 부분은 Component로 분리한다.
+- 파일명은 '명사'로 한다.
+- 예시) UserCard, Profile, ButtonGroup
 - Component 내에서는 비즈니스 로직이 들어가면 안된다.
-- 필요한 비즈니스 로직은 Container로부터 props로 전달 받는다.
+- 필요한 비즈니스 로직은 Container로 부터 props로 전달 받는다.
 ### 4-4. Repository
 - API 통신을 위한 custom hook을 정의한다.
 - Container는 Repository에 구현된 custom hook을 사용해야한다.
+
+### 4-5 예시
 
   
 ## 5. 기타
