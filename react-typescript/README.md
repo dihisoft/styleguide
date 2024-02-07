@@ -1,4 +1,4 @@
-# React + Typescript Coding Convention
+# React & Typescript Coding Convention
 
 ## 1. 기본 세팅
 
@@ -28,14 +28,14 @@
       import React from 'react';
     
       const Header = () => {
-        return <header>This is a Header</header>;
+        return <>I'm header</>;
       };
     
       export default Header;
       ```
 - Interface, Type
     - Interface와 Type중에 Type 사용을 우선시 한다.
-    - type이 유니온 타입이나 교차 타입 같은 고급 타입을 사용하는데 있어서 더 유연하다고 생각함
+    - (type이 유니온 타입이나 교차 타입 같은 고급 타입을 사용하는데 있어서 유연하다고 생각)
   
       
       ```tsx
@@ -137,35 +137,49 @@
 
 ### 3-3. 스타일 컴포넌트
 1. 최상위 부모
-   - '컴포넌트명'Layout 이름으로 생성
+   - 'Layout' 이름으로 생성
 2. 최상위 부모의 자식
-   - '컴포넌트명'Row 또는 '컴포넌트명'Col 이름으로 생성
+   - 'Row' 또는 'Col' 이름으로 생성
    - Row나 Col이라는 네이밍의 실제 태그는 div, section 태그등이 될 수 있음
    - Row -> 가로, Col -> 세로
      - 둘 다 실제 태그가 div여도 flex-direction 등을 변경해서 사용 가능
 3. 나머지 요소
-   - div 태그 -> '컴포넌트명'Box
-   - section 태그 -> '컴포넌트명'Section
-   - ul 태그 -> '컴포넌트명'List
-   - li 태그 -> '컴포넌트명'Item
-   - p 태그 -> '컴포넌트명'Paragraph
-   - span 태그 -> '컴포넌트명'Span
-4. ㅇ
-
-6. 태그명은 S + PascaleCase으로 작성한다. (스타일을 입힌 태그라는 의미의 style를 접두사로 붙인다.)
-- 감싸는태그 중, 최상위 태그의 경우에는 S + Layout 으로 작성한다. (Wrapper는 사용하지 말 것)
-- 감싸는 태그 이름은 SLayout > SContainer > SBox 순으로 작성한다.
+   - div 태그 -> 'Box'
+   - section 태그 -> 'Section'
+   - ul 태그 -> 'List'
+   - li 태그 -> 'Item'
+   - p 태그 -> 'Paragraph'
+   - span 태그 -> 'Span'
+4. 스타일은 다르지만 태그 형태가 같아서 중복되는 이름이 생긴다면 기본 네이밍 앞에 설명을 돕는 명사를 붙인다.
+5. 예시) UserRow, GuestRow, UserCol, UserBox, GuestBox 등
   
   ```tsx
-  export const SLayout = styled.div`
-	// code
-  `
-  export const SContainer = styled.div`
-  // code
-  `
-  export const SBox = styled.div`
-  // code
-  `
+	const Layout = styled.div`
+	  display: flex;
+	  flex-direction: column;
+	  padding: 20px;
+	`;
+	
+	const Row = styled.div`
+	  display: flex;
+	  justify-content: space-between;
+	`;
+	
+	const Col = styled.div`
+	  flex: 1;
+	  padding: 10px;
+	`;
+	
+	const Box = styled.div`
+	  padding: 20px;
+	  border: 1px solid #ccc;
+	  margin-bottom: 10px;
+	`;
+	
+	const Item = styled.li`
+	  width: 100px;
+	  height: 50px;
+	`;
   ```
 
 ### 3-4. 컴포넌트 내부 순서
@@ -174,12 +188,12 @@
 2. Interface
 3. styled-component
 4. useState
-5. custom hooks
-6. useEffect
-7. handler
-8. etc
-9. react code
-    
+5. global state
+6. custom hooks
+7. useEffect
+8. handler
+9. etc
+10. react code
    ```tsx
     // 1. import
     import { use, useEffect, useState } from 'react';
@@ -190,27 +204,30 @@
     }
     
     // 3. styled-components
-    const SLayout = styled.div`
+    const Layout = styled.div`
       // code
     `;
     
-    const SContainer = styled.div`
+    const Row = styled.div`
       // code
     `;
     
-    const SBox = styled.div`
+    const Box = styled.div`
       // code
     `;
     
     const UserListContainer = ({ users }: UserListContainerProps) => {
-      // 4. useState
+      // 4. state
       const [user, setUser] = useState<string[]>([]);
       const [userInfo, setUserInfo] = useState<string>();
-    
-      // 5. custom Hooks
+
+	  // 5. global state
+      const { bears, increasePopulation, removeAllBears } = useStore(state => state)
+
+      // 6. custom Hooks
       const { getUserListAction, isLoadingUserList } = useUserList();
     
-      // 6. useEffect
+      // 7. useEffect
       useEffect(() => {
         getUserListAction();
       }, []);
@@ -222,34 +239,59 @@
         setUser(users);
       }, [isLoadingUserList]);
     
-      // 7. handler
+      // 8. handler
       const handleClickDeleteUser = (id: string) => {};
       const handleClickEditUser = (id: string) => {};
     
-      // 8. etc
+      // 9. etc
       const isEnabledSaveButton = () => {};
     
       if (isLoadingUserList) {
         return <>Loading</>;
       }
     
-      // 9. react code
+      // 10. react code
       return (
-        <SLayout>
-          <SContainer>
+        <Layout>
+          <Row>
             {users.map(userData => (
-              <SBox>{userData}</SBox>
+              <Box>{userData}</Box>
             ))}
-          </SContainer>
-        </SLayout>
+          </Row>
+        </Layout>
       );
     };
     
     export default UserListContainer;
-
    ```
 
-### 3-5. 기타
+## 4. 폴더 구조
 
-- console.log는 제거하고 PR을 생성해야 한다.
-- 
+- 가독성, 유지보수 효율성을 높이기 위해 '뷰', '비즈니스 로직 처리', '데이터 관리'의 책임을 명확히 구분해서 관리해야한다.
+- 폴더 구조는 사용하는 라이브러리나 버전에 따라 다를 수 있지만, 기본 구조는 똑같이 설계해야한다.
+- 라우팅 폴더는 구글의 URL구조 권장방식을 참고해서 단어의 형태로 간결하게 네이밍하고, 여러 개의 단어로 표현되야한다면 kebab case를 사용한다.
+- https://developers.google.com/search/docs/crawling-indexing/url-structure?hl=ko
+- 폴더는 크게 Routing, Container, Component, Repository 로 나눈다.
+- Container는 여러개의 Container와 Component를 가질 수 있다.
+- Component는 여러개의 Container와 Component를 가질 수 있다.
+
+### 4-1. Routing (NextJs)
+- NextJs 프레임워크 규칙에 따라 pages 또는 app 폴더 내부에 생성한다.
+- 네이밍은 kebab case를 사용한다.
+### 4-2. Container
+- 모든 비즈니스 로직을 처리한다.
+- hook 함수들과 handler 이벤트를 정의한다.
+- 화면의 기본 마크업이 들어간다.
+### 4-3. Component
+- UserCard, Profile과 같이 디자인이 들어가는 부분은 Component로 분리한다.
+- Component 내에서는 비즈니스 로직이 들어가면 안된다.
+- 필요한 비즈니스 로직은 Container로부터 props로 전달 받는다.
+### 4-4. Repository
+- API 통신을 위한 custom hook을 정의한다.
+- Container는 Repository에 구현된 custom hook을 사용해야한다.
+
+  
+## 5. 기타
+
+- PR을 생성하기 전에는 console.log를 제거한다.
+  
