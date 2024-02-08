@@ -122,8 +122,8 @@
     - 상수명은 모두 대문자를 사용하고 단어 사이는 밑줄로 연결한다.
     - 예시) HTTP_OK, AUTH_TOKEN, BASE_URL
 - 폴더
-    - 폴더명은 camel case로 작성한다.
-    - 예시) components, apiStore, centerSetting
+    - 폴더명은 kebab case로 작성한다.
+    - 예시) components, api-store, center-Setting, user-profile
 - 파일
     - 파일명은 pascal case로 작성한다.
     - customHooks을 사용하는 경우 ‘use + 함수명’ 으로 작성한다.
@@ -299,11 +299,15 @@
   ## 4-1. 라우터 디렉토리
     ### 4-1-1. routing Folder
       - routing folder 내부에는 page.tsx, loading.tsx 등 NextJs에서 정의한 파일이 들어간다.
-    ### 4-1-2. component Folder
-      - component folder 내부에는 client component와 custom hook 파일이 들어간다.
+    ### 4-1-2. components Folder
+      - component folder 내부에는 client component가 들어간다.
+      - hook, custom hook, useEffect 등의 기능이 들어간다.
+      - component는 자식 component를 소유할 수 있다.
+    ### 4-1-3. hooks foler
+      - hooks foler 내부에는 custom hook 파일이 들어간다.
       - custom hook은 api 통신과 관련된 기능을 처리하는 hook과 비즈니스 로직을 처리하는 hook으로 나눈다.
       - 비즈니스 로직을 처리하는 hook은 비즈니스 로직이 길어질 때 사용한다.
-    ### 4-1-3. api Folder 
+    ### 4-1-4. api Folder 
       - api foldedr 내부에는 page.tsx(server component)에서 사용하는 api 파일이 들어간다.
   ## 4-2. 루트 디렉토리
     - 공통으로 사용되는 기능은 루트 경로에 폴더를 만들어서 관리한다.
