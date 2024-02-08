@@ -1,4 +1,26 @@
 # React & Typescript Coding Convention
+## 목차
+- [1. 기본 세팅](#1-기본-세팅)
+- [2. 주석](#2-주석)
+- [3. 코드](#3-코드)
+  * [3-1. 네이밍](#3-1-네이밍)
+  * [3-2. ES6](#3-2-es6)
+  * [3-3. 스타일 컴포넌트](#3-3-스타일-컴포넌트)
+  * [3-4. 컴포넌트 내부 순서](#3-4-컴포넌트-내부-순서)
+- [4. 폴더 구조](#4-폴더-구조)
+- [4-1. 라우터 디렉토리](#4-1-라우터-디렉토리)
+  * [4-1-1. routing Folder](#4-1-1-routing-folder)
+  * [4-1-2. component Folder](#4-1-2-component-folder)
+  * [4-1-3. api Folder](#4-1-3-api-folder)
+- [4-2. 루트 디렉토리](#4-2-루트-디렉토리)
+  * [4-2-1. utils](#4-2-1-utils)
+  * [4-2-2. constants](#4-2-2-constants)
+  * [4-2-3. assets](#4-2-3-assets)
+  * [4-2-4. components](#4-2-4-components)
+  * [4-2-5. hooks](#4-2-5-hooks)
+  * [4-2-6. styles](#4-2-6-styles)
+  * [4-2-7. types](#4-2-7-types)
+
 
 ## 1. 기본 세팅
 
