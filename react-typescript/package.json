@@ -1,0 +1,32 @@
+{
+  "name": "react-typescript",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "styled-components": "^6.1.8"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.4.0",
+    "@swc/plugin-styled-components": "^1.5.118",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-next": "14.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "typescript": "^5"
+  }
+}
