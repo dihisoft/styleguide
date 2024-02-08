@@ -195,6 +195,8 @@
 9. etc
 10. react code
    ```tsx
+    'use client'
+
     // 1. import
     import { use, useEffect, useState } from 'react';
     
@@ -268,36 +270,38 @@
 ## 4. 폴더 구조
 
 - 가독성, 유지보수 효율성을 높이기 위해 '뷰', '비즈니스 로직 처리', '데이터 관리'의 책임을 명확히 구분해서 관리해야한다.
-- 폴더 구조는 사용하는 라이브러리나 버전에 따라 다를 수 있지만, 기본 구조는 똑같이 설계해야한다.
+- 폴더 구조는 사용하는 라이브러리나 버전에 따라 다를 수 있지만, 기본 구조는 최대한 비슷하게 설계해야한다.
 - 라우팅 폴더는 구글의 URL구조 권장방식을 참고해서 단어의 형태로 간결하게 네이밍하고, 여러 개의 단어로 표현되야한다면 kebab case를 사용한다.
 - https://developers.google.com/search/docs/crawling-indexing/url-structure?hl=ko
-- 폴더는 크게 Routing, Container, Component, Repository 로 나눈다.
-- Container는 여러개의 Container와 Component를 가질 수 있다.
-- Component는 여러개의 Container와 Component를 가질 수 있다.
+- 폴더와 파일의 종류는 아래처럼 나뉜다.
+  ## 4-1. 라우터 디렉토리
+    ### 4-1-1. routing Folder
+      - routing folder 내부에는 page.tsx, loading.tsx 등 NextJs에서 정의한 파일이 들어간다.
+    ### 4-1-2. component Folder
+      - component folder 내부에는 client component와 custom hook 파일이 들어간다.
+      - custom hook은 api 통신과 관련된 기능을 처리하는 hook과 비즈니스 로직을 처리하는 hook으로 나눈다.
+      - 비즈니스 로직을 처리하는 hook은 비즈니스 로직이 길어질 때 사용한다.
+    ### 4-1-3. api Folder 
+      - api foldedr 내부에는 page.tsx(server component)에서 사용하는 api 파일이 들어간다.
+  ## 4-2. 루트 디렉토리
+    - 공통으로 사용되는 기능은 루트 경로에 폴더를 만들어서 관리한다.
+    ### 4-2-1. utils
+      - 함수 모음
+    ### 4-2-2. constants
+      - 상수 모음
+    ### 4-2-3. assets
+      - 이미지 파일이나 아이콘 등의 파일 모음
+    ### 4-2-4. components
+      - 컴포넌트는 모음
+    ### 4-2-5. hooks
+      - custom hook 모음
+    ### 4-2-6. styles
+      - theme, color 모음
+    ### 4-2-7. types
+      - 타입 모음
 
-### 4-1. Routing (NextJs)
-- NextJs 프레임워크 규칙에 따라 pages 또는 app 폴더 내부에 생성한다.
-- 네이밍은 kebab case를 사용한다.
-### 4-2. Container
-- 데이터 처리, 상태 관리, API 호출, 핸들러 이벤트 등과 같은 모든 비즈니스 로직을 처리한다.
-- 파일명은 '명사 + Container'로 한다.
-- 예시) 사용자 목록을 다루는 Container라면 'UserListContainer'로 명명한다.
-- 화면의 기본 마크업과 Component로 구성된다.
-- 특정 영역에 대한 디자인이 들어간 코드를 최대한 Component 영역으로 분리한다.
-### 4-3. Component
-- UserCard, Profile과 같이 디자인이 들어가는 부분은 Component로 분리한다.
-- 파일명은 '명사'로 한다.
-- 예시) UserCard, Profile, ButtonGroup
-- Component 내에서는 비즈니스 로직이 들어가면 안된다.
-- 필요한 비즈니스 로직은 Container로 부터 props로 전달 받는다.
-### 4-4. Repository
-- API 통신을 위한 custom hook을 정의한다.
-- Container는 Repository에 구현된 custom hook을 사용해야한다.
 
-### 4-5 예시
-
-  
 ## 5. 기타
 
 - PR을 생성하기 전에는 console.log를 제거한다.
-  
+- merge 하기 전에는 build 에러가 있는지 검사하고, 에러를 해결한 후 merge 한다.
