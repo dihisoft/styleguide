@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import StyledComponentsRegistry from '@/lib/registry';
+import Gnb from '@/components/layout/Gnb';
+import Scaffold from '@/components/layout/Scaffold';
+import Footer from '@/components/layout/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +20,13 @@ const RootLayout = ({
 }>) => (
   <html lang="en">
     <body className={inter.className}>
-      <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      <StyledComponentsRegistry>
+        <Scaffold
+          header={<Gnb />}
+          body={children}
+          footer={<Footer />}
+        />
+      </StyledComponentsRegistry>
     </body>
   </html>
 );

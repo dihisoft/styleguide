@@ -13,10 +13,12 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-no-useless-fragment": "warn",
+    "react/require-default-props": "off", // props가 optional일 때 default props를 설정하지 않으면 경고가 나오게 설정
     "react/function-component-definition": [
       2,
       { "namedComponents": "arrow-function" }
     ],
-    "import/no-extraneous-dependencies": 0 // 테스트 또는 개발환경을 구성하는 파일에서는 devDependency 사용을 허용
+    "import/no-extraneous-dependencies": 0, // 테스트 또는 개발환경을 구성하는 파일에서는 devDependency 사용을 허용
+    "import/prefer-default-export": 0 // export default를 사용하지 않아도 되도록 설정
   }
 }
