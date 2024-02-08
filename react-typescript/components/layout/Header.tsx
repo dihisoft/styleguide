@@ -17,6 +17,7 @@ const Row = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+  background-color: lightskyblue;
 `;
 
 const Box = styled.div`
@@ -29,7 +30,7 @@ const Box = styled.div`
   background-color: aliceblue;
 `;
 
-const Gnb = () => (
+const Header = () => (
   <Layout>
     <Row>
       <Link href="/">
@@ -47,4 +48,4 @@ const Gnb = () => (
   </Layout>
 );
 
-export default Gnb;
+export default Header;

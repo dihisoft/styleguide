@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import StyledComponentsRegistry from '@/lib/registry';
-import Gnb from '@/components/layout/Gnb';
+import Header from '@/components/layout/Header';
 import Scaffold from '@/components/layout/Scaffold';
 import Footer from '@/components/layout/Footer';
 
@@ -22,7 +22,7 @@ const RootLayout = ({
     <body className={inter.className}>
       <StyledComponentsRegistry>
         <Scaffold
-          header={<Gnb />}
+          header={<Header />}
           body={children}
           footer={<Footer />}
         />

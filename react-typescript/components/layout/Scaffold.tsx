@@ -28,13 +28,13 @@ const HeaderBox = styled.div`
 const BodyLayout = styled.div`
   display: flex;
   flex: 1;
-  background-color: antiquewhite;
+  background-color: lightcyan;
 `;
 
 const BodyBox = styled.div`
   flex: 1;
-  margin: 20px 20px;
-  background-color: aquamarine;
+  margin: 20px 150px;
+  background-color: lightskyblue;
 `;
 
 const FooterBox = styled.div`
@@ -42,7 +42,11 @@ const FooterBox = styled.div`
   min-height: 200px;
 `;
 
-const Scaffold = ({ header, body, footer }: ScaffoldProps) => (
+const Scaffold = ({
+  header,
+  body,
+  footer,
+}: ScaffoldProps) => (
   <Layout>
     <Col>
       <HeaderBox>{header}</HeaderBox>

@@ -24,7 +24,7 @@ import { useState } from 'react';
  *
  */
 import styled, { css } from 'styled-components';
-import useProfileCard from '../hook/useProfileCard';
+import useProfileCardMutation from '../hook/useProfileCardMutation';
 
 interface UserProfileCardProps {
   idList: string[];
@@ -66,7 +66,7 @@ const UserProfileCard = ({
     isLoadingProfileCard,
     profileCardData,
     profileCardDataAction,
-  } = useProfileCard();
+  } = useProfileCardMutation();
 
   const handleClickBox = async (id: string) => {
     await profileCardDataAction(id);

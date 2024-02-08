@@ -8,7 +8,7 @@ const FooterBox = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: aliceblue;
+  background-color: lightsteelblue;
 `;
 
 const Footer = () => (
