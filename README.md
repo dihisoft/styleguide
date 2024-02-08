@@ -102,7 +102,7 @@ void align(bool clearItems) {
 
 ### 상수 이름에는 `lowerCamelCase` 사용 선호
 
-새로운 코드에서, 상수 변수와 열거형 값을 포함하여 `lowerCamelCase`를 사용하세요.
+새로운 코드에서, 상수 변수와 열거형 값을 포함하여 `lowerCamelCase`를 사용하세요. 상수를 SCREAMING_CAPS로 명명한 경우에는 상수에서 변수로 변경할 때 명명 규칙도 변경해야 하지만, lowerCamelCase를 사용하면 이러한 필요성이 줄어듭니다.
 
 good
 ```dart tag=
