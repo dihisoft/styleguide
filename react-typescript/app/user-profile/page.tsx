@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 };
 
 const UserProfile = async () => {
-  const { idList } = await apiStore.getIdList();
+  const idList = await apiStore.getRepoList(
+    repo => repo.id,
+  );
 
   return <UserProfileCard idList={idList} />;
 };
