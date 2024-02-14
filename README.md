@@ -109,6 +109,7 @@
 
   - 작업을 수행한 후에는 담당 리뷰어를 지정해서 Pull Request를 한다.
   - Pull Request를 만들 때 작업에 대한 내용을 상세히 기술한다.
+  - <mark>작업 효율성 향상을 위해서 본인이 작업한 내용을 테스트 한 후에 PR을 생성한다.</mark>
 
     - 제목 → ‘[지라 이슈 이름] {작업의 제목}’붙여서 작성한다.
 
@@ -180,7 +181,6 @@
 
 - 리뷰어가 approve 한 경우, 자신의 Pull Request는 스스로 merge 한다.
 - <mark>merge 하기 전에는 ‘npm run build’ 같은 명령어를 수행해서 build 에러가 없는지 체크한 후 merge 한다.</mark>
-- <mark>작업 효율성 향상을 위해서 본인이 작업한 내용을 테스트 한 후에 PR을 생성한다.</mark>
 
 [flutter]: https://github.com/dihisoft/styleguide/tree/main/flutter
 [react-typescript]: https://github.com/dihisoft/styleguide/tree/main/react-typescript
