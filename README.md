@@ -4,8 +4,6 @@
 - [React-Typescript Style Guide][react-typescript]
   <br/>
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=dihisoft)](https://github.com/anuraghazra/github-readme-stats)
-
 # Dihisoft Git Rule
 
 ## 목차
