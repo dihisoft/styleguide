@@ -14,7 +14,7 @@ type Repo = {
 };
 
 // TODO - Converter가 필요 없을 때, getIdList() 형태로 호출할 수 있도록 수정해야함
-export const getIdList2 = async <Output,>(
+export const getRepoList = async <Output,>(
   converter: Converter<Repo, Output>,
 ): Promise<Output[]> => {
   const res = await fetch(
