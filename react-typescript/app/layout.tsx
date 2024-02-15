@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import StyledComponentsRegistry from '@/lib/registry';
+import StyledComponentsRegistry from '@/lib/Registry';
 import Header from '@/components/layout/Header';
 import Scaffold from '@/components/layout/Scaffold';
 import Footer from '@/components/layout/Footer';
+import { ExampleThemeProvider } from '@/context/ExampleThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,11 +22,13 @@ const RootLayout = ({
   <html lang="en">
     <body className={inter.className}>
       <StyledComponentsRegistry>
-        <Scaffold
-          header={<Header />}
-          body={children}
-          footer={<Footer />}
-        />
+        <ExampleThemeProvider>
+          <Scaffold
+            header={<Header />}
+            body={children}
+            footer={<Footer />}
+          />
+        </ExampleThemeProvider>
       </StyledComponentsRegistry>
     </body>
   </html>
