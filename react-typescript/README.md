@@ -132,16 +132,20 @@
   - 상수명은 모두 대문자를 사용하고 단어 사이는 밑줄로 연결한다.
   - 예시) HTTP_OK, AUTH_TOKEN, BASE_URL
 - 폴더
-  - 폴더명은 kebab case로 작성한다.
-  - 예시) components, api-store, center-Setting, user-profile
+  - 라우팅 폴더명은 kebab case로 작성한다.
+  - 라우팅 폴더를 제외한 폴더명은 camel case로 작성한다.
 - 파일
-  - 파일명은 pascal case로 작성한다.
-  - customHooks을 사용하는 경우 ‘use + 함수명’ 으로 작성한다.
+
+  - tsx(리액트 컴포넌트)가 없을 경우 .ts 확장자를 사용한다.
+  - 컴포넌트 파일은 pascal case로 작성한다.
+  - 클래스가 정의된 파일은 pascal case로 클래스명과 동일하게 작성한다.
+  - 위 이외의 파일명은 camel case로 작성한다.
+
 - 이벤트 핸들러
-  - Props의 경우에는 ‘on’을 붙여서 작성한다.
-  - 함수인 경우에는 ‘handle’을 붙여서 작성한다.
+  - props의 경우에는 ‘on’을 붙여서 작성한다.
+  - 함수인 경우에는 ‘handle’을 붙여서 작성한다. (함수 이름을 봤을 때 이벤트 핸들러를 처리하는지 함수인지 판별 가능)
     ```tsx
-    <MyComponent onclick={this.handleClick} />
+    <MyComponent onClick={this.handleClick} />
     ```
 
 ### 3-2. ES6
@@ -161,9 +165,19 @@
 - let과 const만 사용한다. (var 사용 금지)
 - 화살표 함수를 사용한다.
 - null이나 undefined를 처리할 때는 optional chaining 연산자 (?.) 를 사용한다.
+
   ```tsx
   const user = { profile: { name: 'John' } };
-  const userName = user.profile?.name; // 'John'
+
+  // good
+  const userName = user.profile?.name ?? '';
+
+  // bad
+  if (user.profile) {
+    const userName = user.profile.name;
+  } else {
+    const userName = '';
+  }
   ```
 
 ### 3-3. 스타일 컴포넌트
@@ -312,37 +326,40 @@ export default UserListContainer;
 - https://developers.google.com/search/docs/crawling-indexing/url-structure?hl=ko
 - 폴더와 파일의 종류는 아래처럼 나뉜다.
   ## 4-1. 라우터 디렉토리
-  ### 4-1-1. routing Folder
-      - routing folder 내부에는 page.tsx, loading.tsx 등 NextJs에서 정의한 파일이 들어간다.
-  ### 4-1-2. components Folder
-      - component folder 내부에는 client component가 들어간다.
+  ### 4-1-1. routing 폴더
+      - routing 폴더 내부에는 page.tsx, loading.tsx 등 NextJs에서 정의한 파일이 들어간다.
+  ### 4-1-2. components 폴더
+      - component 폴더 내부에는 client component가 들어간다.
       - hook, custom hook, useEffect 등의 기능이 들어간다.
       - component는 자식 component를 소유할 수 있다.
-  ### 4-1-3. hooks foler
-      - hooks foler 내부에는 custom hook 파일이 들어간다.
+  ### 4-1-3. hooks 폴더
+      - hooks 폴더 내부에는 custom hook 파일이 들어간다.
       - custom hook은 api 통신과 관련된 기능을 처리하는 hook과 비즈니스 로직을 처리하는 hook으로 나눈다.
       - api 통신과 관련된 hook은 파일명 끝에 'Query' 또는 'Mutation'을 붙인다.
       - 비즈니스 로직을 처리하는 hook은 비즈니스 로직이 길어질 때 사용한다.
-  ### 4-1-4. api Folder
-      - api foldedr 내부에는 page.tsx(server component)에서 사용하는 api 파일이 들어간다.
+  ### 4-1-4. api 폴더
+      - api 폴더 내부에는 page.tsx(server component)에서 사용하는 api 파일이 들어간다.
+  ### 4-1-5. context 폴더
+      - context 폴더 내부에는 해당 페이지에서 사용되는 context(provider) 파일이 들어간다.
   ## 4-2. 루트 디렉토리
   - 공통으로 사용되는 기능은 루트 경로에 폴더를 만들어서 관리한다.
   ### 4-2-1. utils
-      - 함수 모음
+      - 공통으로 사용되는 format 등 모음
   ### 4-2-2. constants
       - 상수 모음
   ### 4-2-3. assets
       - 이미지 파일이나 아이콘 등의 파일 모음
   ### 4-2-4. components
       - 컴포넌트는 모음
-  ### 4-2-5. hooks
+  ### 4-2-5. contexts
+      - context(provider) 모음
+  ### 4-2-6. hooks
       - custom hook 모음
-  ### 4-2-6. styles
+  ### 4-2-7. styles
       - theme, color 모음
-  ### 4-2-7. types
+  ### 4-2-8. types
       - 타입 모음
 
 ## 5. 기타
 
 - PR을 생성하기 전에는 console.log를 제거한다.
-- merge 하기 전에는 build 에러가 있는지 검사하고, 에러를 해결한 후 merge 한다.

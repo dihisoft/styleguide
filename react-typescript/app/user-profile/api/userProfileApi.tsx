@@ -1,4 +1,4 @@
-import { Converter } from '@/utils/Converter';
+import { Converter } from '@/utils/converter';
 
 /**
  * NOTE 서버 컴포넌트에서 사용하는 API 모음
