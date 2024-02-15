@@ -4,6 +4,17 @@
 - [React-Typescript Style Guide][react-typescript]
   <br/>
 
+# 주석
+
+- VSCode의 plugin Comment Anchors 규칙을 따른다.
+- 불필요한 주석을 사용하지 않는다.
+- https://github.com/StarlaneStudios/vscode-comment-anchors
+
+    <img width="600" src="https://github.com/dihisoft/styleguide/assets/138173291/6c35b41b-95fc-4835-a1d2-4a9a61ded345" />
+
+- // 를 입력하면 자동완성으로 나오는 형태를 사용한다.
+  <img width="600" src="https://github.com/dihisoft/styleguide/assets/138173291/ddecd688-2b92-45fe-8c6e-e57e3e7dc418" />
+
 # Dihisoft Git Rule
 
 ## 목차

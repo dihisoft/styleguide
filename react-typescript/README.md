@@ -3,46 +3,34 @@
 ## 목차
 
 - [1. 기본 세팅](#1-기본-세팅)
-- [2. 주석](#2-주석)
-- [3. 코드](#3-코드)
-  - [3-1. 네이밍](#3-1-네이밍)
-  - [3-2. ES6](#3-2-es6)
-  - [3-3. 스타일 컴포넌트](#3-3-스타일-컴포넌트)
-  - [3-4. 컴포넌트 내부 순서](#3-4-컴포넌트-내부-순서)
-- [4. 폴더 구조](#4-폴더-구조)
-- [4-1. 라우터 디렉토리](#4-1-라우터-디렉토리)
-  - [4-1-1. routing Folder](#4-1-1-routing-folder)
-  - [4-1-2. component Folder](#4-1-2-component-folder)
-  - [4-1-3. api Folder](#4-1-3-api-folder)
-- [4-2. 루트 디렉토리](#4-2-루트-디렉토리)
-  - [4-2-1. utils](#4-2-1-utils)
-  - [4-2-2. constants](#4-2-2-constants)
-  - [4-2-3. assets](#4-2-3-assets)
-  - [4-2-4. components](#4-2-4-components)
-  - [4-2-5. hooks](#4-2-5-hooks)
-  - [4-2-6. styles](#4-2-6-styles)
-  - [4-2-7. types](#4-2-7-types)
-- [5. 기타](#5-기타)
+- [2. 코드](#3-코드)
+  - [2-1. 네이밍](#3-1-네이밍)
+  - [2-2. ES6](#3-2-es6)
+  - [2-3. 스타일 컴포넌트](#3-3-스타일-컴포넌트)
+  - [2-4. 컴포넌트 내부 순서](#3-4-컴포넌트-내부-순서)
+- [3. 폴더 구조](#4-폴더-구조)
+- [3-1. 라우터 디렉토리](#4-1-라우터-디렉토리)
+  - [3-1-1. routing Folder](#4-1-1-routing-folder)
+  - [3-1-2. component Folder](#4-1-2-component-folder)
+  - [3-1-3. api Folder](#4-1-3-api-folder)
+- [3-2. 루트 디렉토리](#4-2-루트-디렉토리)
+  - [3-2-1. utils](#4-2-1-utils)
+  - [3-2-2. constants](#4-2-2-constants)
+  - [3-2-3. assets](#4-2-3-assets)
+  - [3-2-4. components](#4-2-4-components)
+  - [3-2-5. hooks](#4-2-5-hooks)
+  - [3-2-6. styles](#4-2-6-styles)
+  - [3-2-7. types](#4-2-7-types)
+- [4. 기타](#5-기타)
 
 ## 1. 기본 세팅
 
 - Prettier, ESLint
   - 팀원간에 동일한 Prettier, ESLint 설정 파일로 작업을 진행한다.
 
-## 2. 주석
+## 2. 코드
 
-- VSCode의 plugin Comment Anchors를 사용한다.
-- 불필요한 주석을 사용하지 않는다.
-- https://github.com/StarlaneStudios/vscode-comment-anchors
-
-    <img width="600" src="https://github.com/dihisoft/styleguide/assets/138173291/6c35b41b-95fc-4835-a1d2-4a9a61ded345" />
-
-- // 를 입력하면 자동완성으로 나오는 형태를 사용한다.
-  <img width="600" src="https://github.com/dihisoft/styleguide/assets/138173291/ddecd688-2b92-45fe-8c6e-e57e3e7dc418" />
-
-## 3. 코드
-
-### 3-1. 네이밍
+### 2-1. 네이밍
 
 - 컴포넌트
 
@@ -148,7 +136,7 @@
     <MyComponent onClick={this.handleClick} />
     ```
 
-### 3-2. ES6
+### 2-2. ES6
 
 - 배열이나 객체의 요소를 복사하거나 확장할 때 spread 연산자를 사용한다.
 
@@ -180,7 +168,7 @@
   }
   ```
 
-### 3-3. 스타일 컴포넌트
+### 2-3. 스타일 컴포넌트
 
 1. 최상위 부모
    - 'Layout' 이름으로 생성
@@ -228,7 +216,7 @@ const Item = styled.li`
 `;
 ```
 
-### 3-4. 컴포넌트 내부 순서
+### 2-4. 컴포넌트 내부 순서
 
 1. Import
 2. Interface
@@ -318,48 +306,48 @@ const UserListContainer = ({
 export default UserListContainer;
 ```
 
-## 4. 폴더 구조
+## 3. 폴더 구조
 
 - 가독성, 유지보수 효율성을 높이기 위해 '뷰', '비즈니스 로직 처리', '데이터 관리'의 책임을 명확히 구분해서 관리해야한다.
 - 폴더 구조는 사용하는 라이브러리나 버전에 따라 다를 수 있지만, 기본 구조는 최대한 비슷하게 설계해야한다.
 - 라우팅 폴더는 구글의 URL구조 권장방식을 참고해서 단어의 형태로 간결하게 네이밍하고, 여러 개의 단어로 표현되야한다면 kebab case를 사용한다.
 - https://developers.google.com/search/docs/crawling-indexing/url-structure?hl=ko
 - 폴더와 파일의 종류는 아래처럼 나뉜다.
-  ## 4-1. 라우터 디렉토리
-  ### 4-1-1. routing 폴더
+  ## 3-1. 라우터 디렉토리
+  ### 3-1-1. routing 폴더
       - routing 폴더 내부에는 page.tsx, loading.tsx 등 NextJs에서 정의한 파일이 들어간다.
-  ### 4-1-2. components 폴더
+  ### 3-1-2. components 폴더
       - component 폴더 내부에는 client component가 들어간다.
       - hook, custom hook, useEffect 등의 기능이 들어간다.
       - component는 자식 component를 소유할 수 있다.
-  ### 4-1-3. hooks 폴더
+  ### 3-1-3. hooks 폴더
       - hooks 폴더 내부에는 custom hook 파일이 들어간다.
       - custom hook은 api 통신과 관련된 기능을 처리하는 hook과 비즈니스 로직을 처리하는 hook으로 나눈다.
       - api 통신과 관련된 hook은 파일명 끝에 'Query' 또는 'Mutation'을 붙인다.
       - 비즈니스 로직을 처리하는 hook은 비즈니스 로직이 길어질 때 사용한다.
-  ### 4-1-4. api 폴더
+  ### 3-1-4. api 폴더
       - api 폴더 내부에는 page.tsx(server component)에서 사용하는 api 파일이 들어간다.
-  ### 4-1-5. context 폴더
+  ### 3-1-5. context 폴더
       - context 폴더 내부에는 해당 페이지에서 사용되는 context(provider) 파일이 들어간다.
-  ## 4-2. 루트 디렉토리
+  ## 3-2. 루트 디렉토리
   - 공통으로 사용되는 기능은 루트 경로에 폴더를 만들어서 관리한다.
-  ### 4-2-1. utils
+  ### 3-2-1. utils
       - 공통으로 사용되는 format 등 모음
-  ### 4-2-2. constants
+  ### 3-2-2. constants
       - 상수 모음
-  ### 4-2-3. assets
+  ### 3-2-3. assets
       - 이미지 파일이나 아이콘 등의 파일 모음
-  ### 4-2-4. components
+  ### 3-2-4. components
       - 컴포넌트는 모음
-  ### 4-2-5. contexts
+  ### 3-2-5. contexts
       - context(provider) 모음
-  ### 4-2-6. hooks
+  ### 3-2-6. hooks
       - custom hook 모음
-  ### 4-2-7. styles
+  ### 3-2-7. styles
       - theme, color 모음
-  ### 4-2-8. types
+  ### 3-2-8. types
       - 타입 모음
 
-## 5. 기타
+## 4. 기타
 
 - PR을 생성하기 전에는 console.log를 제거한다.
