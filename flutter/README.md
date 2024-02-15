@@ -54,7 +54,11 @@
 - extensions
   - extension의 이름은 pascal case로 작성한다.
   ```dart
-  extension MyFancyList<T> on List<T> { ... }
+  extension StringExtension on String {
+    String formatHHmm() {
+      return '${substring(0, 2)}:${substring(2)}';
+    }
+  }
   ```
 - 함수
 
