@@ -5,7 +5,7 @@ import Header from '@/components/layout/Header';
 import Scaffold from '@/components/layout/Scaffold';
 import Footer from '@/components/layout/Footer';
 import { ExampleThemeProvider } from '@/context/ExampleThemeProvider';
-import StyledComponentsRegistry from '@/lib/registry';
+import StyledComponentsRegistry from '@/utils/registry';
 
 const inter = Inter({ subsets: ['latin'] });
 

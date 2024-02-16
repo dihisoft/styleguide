@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { ExampleThemeContext } from '@/context/ExampleThemeProvider';
+import { ThemeType, themes } from '@/styles/theme';
 
 const Layout = styled.div`
   width: 100%;
@@ -19,8 +20,13 @@ const Row = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  /* background-color: lightskyblue; */
-  background-color: ${p => p.theme.color.bg.primary};
+  background-color: #b0e2ff;
+`;
+
+const ThemeRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 `;
 
 const Box = styled.div`
@@ -34,11 +40,21 @@ const Box = styled.div`
   cursor: pointer;
 `;
 
-const Header = () => {
-  const { toggleTheme } = useContext(ExampleThemeContext);
+const ThemeBox = styled.div<{ themeName: ThemeType }>`
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  cursor: pointer;
 
-  const handleClickToggleTheme = () => {
-    toggleTheme();
+  background-color: ${({ themeName }) =>
+    themes[themeName].color.bg.primary};
+`;
+
+const Header = () => {
+  const { changeTheme } = useContext(ExampleThemeContext);
+
+  const handleChangeTheme = (newTheme: ThemeType) => {
+    changeTheme(newTheme);
   };
   return (
     <Layout>
@@ -54,9 +70,16 @@ const Header = () => {
         </Link>
         <Box>Menu4</Box>
         <Box>Menu5</Box>
-        <Box onClick={handleClickToggleTheme}>
-          Toggle Theme
-        </Box>
+        <ThemeRow>
+          {Object.keys(themes).map(theme => (
+            <ThemeBox
+              themeName={theme as ThemeType}
+              onClick={() =>
+                handleChangeTheme(theme as ThemeType)
+              }
+            />
+          ))}
+        </ThemeRow>
       </Row>
     </Layout>
   );

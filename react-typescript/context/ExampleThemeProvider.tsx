@@ -1,29 +1,43 @@
 'use client';
 
-import { darkTheme, lightTheme } from '@/styles/theme';
+import {
+  ThemeType,
+  isValidTheme,
+  themes,
+} from '@/styles/theme';
 import React, { useMemo, useState } from 'react';
 
 import { ThemeContext } from 'styled-components';
 
-export const ExampleThemeContext = React.createContext({
-  theme: 'light',
-  toggleTheme: () => {},
-});
+type ExampleThemeContextType = {
+  theme: ThemeType;
+  changeTheme: (theme: ThemeType) => void;
+};
+export const ExampleThemeContext =
+  React.createContext<ExampleThemeContextType>({
+    theme: 'light',
+    changeTheme: () => {},
+  });
 
 export const ExampleThemeProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState<ThemeType>(
+    isValidTheme(localStorage.getItem('theme') as ThemeType)
+      ? (localStorage.getItem('theme') as ThemeType)
+      : 'light',
+  );
 
-  const value = useMemo(
+  const value = useMemo<ExampleThemeContextType>(
     () => ({
       theme,
-      toggleTheme: () => {
-        setTheme(prevTheme =>
-          prevTheme === 'light' ? 'dark' : 'light',
-        );
+      changeTheme: (newTheme: ThemeType) => {
+        setTheme(() => {
+          localStorage.setItem('theme', newTheme);
+          return newTheme;
+        });
       },
     }),
     [theme],
@@ -31,9 +45,7 @@ export const ExampleThemeProvider = ({
 
   return (
     <ExampleThemeContext.Provider value={value}>
-      <ThemeContext.Provider
-        value={theme === 'light' ? lightTheme : darkTheme}
-      >
+      <ThemeContext.Provider value={themes[theme]}>
         {children}
       </ThemeContext.Provider>
     </ExampleThemeContext.Provider>
