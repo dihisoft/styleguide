@@ -7,7 +7,6 @@
     "airbnb",
     "airbnb-typescript",
     "prettier",
-
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {

@@ -5,7 +5,7 @@ import {
   isValidTheme,
   themes,
 } from '@/styles/theme';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { ThemeContext } from 'styled-components';
 
@@ -24,11 +24,7 @@ export const ExampleThemeProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [theme, setTheme] = useState<ThemeType>(
-    isValidTheme(localStorage.getItem('theme') as ThemeType)
-      ? (localStorage.getItem('theme') as ThemeType)
-      : 'light',
-  );
+  const [theme, setTheme] = useState<ThemeType>('light');
 
   const value = useMemo<ExampleThemeContextType>(
     () => ({
@@ -42,6 +38,16 @@ export const ExampleThemeProvider = ({
     }),
     [theme],
   );
+
+  useEffect(() => {
+    setTheme(
+      isValidTheme(
+        localStorage.getItem('theme') as ThemeType,
+      )
+        ? (localStorage.getItem('theme') as ThemeType)
+        : 'light',
+    );
+  }, []);
 
   return (
     <ExampleThemeContext.Provider value={value}>
