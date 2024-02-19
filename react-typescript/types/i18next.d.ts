@@ -1,12 +1,12 @@
-import ko from '@/locales/ko/common.json';
-import en from '@/locales/en/common.json';
+import user from '@/locales/ko/user.json';
+import common from '@/locales/ko/common.json';
 
 const resources = {
-  ko,
-  en,
+  user,
+  common,
 } as const;
 
-export const defaultNS = 'ko';
+export const defaultNS = 'common';
 declare module 'i18next' {
   // Extend CustomTypeOptions
   interface CustomTypeOptions {

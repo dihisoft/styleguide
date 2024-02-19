@@ -30,7 +30,8 @@
     "i18nConfig.js",
     "middleware.js",
     "app/i18n.js",
-    "./types"
+    "./types",
+    "app/[locale]/i18n.js"
   ],
   "exclude": ["node_modules"]
 }

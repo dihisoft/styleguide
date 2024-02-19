@@ -6,9 +6,15 @@ import styled from 'styled-components';
 const Layout = styled.div``;
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['user', 'common']);
 
-  return <Layout>{t('home-screen')}</Layout>;
+  return (
+    <Layout>
+      {t('user:user-label')}
+      <br />
+      {t('common:home-screen')}
+    </Layout>
+  );
 };
 
 export default Home;

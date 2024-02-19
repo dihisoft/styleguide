@@ -8,8 +8,8 @@ interface WithParams {
   };
 }
 
-// NOTE i18nNamespaces는 여기서 관리
-const i18nNamespaces = ['common'];
+// NOTE i18n Namespaces는 여기서 관리
+const i18nNamespaces = ['common', 'user'];
 
 const withTranslations = <P extends WithParams>(
   WrappedComponent: ComponentType<P>,
@@ -23,8 +23,8 @@ const withTranslations = <P extends WithParams>(
 
     return (
       <TranslationsProvider
-        namespaces={i18nNamespaces}
         locale={props.params.locale}
+        namespaces={i18nNamespaces}
         resources={resources}
       >
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
