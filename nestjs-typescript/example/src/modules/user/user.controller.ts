@@ -2,33 +2,60 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { UserService } from './user.service'
 import { CreateUserDto } from '../../common/dtos/create-user.dto'
 import { UpdateUserDto } from '../../common/dtos/update-user.dto'
+import { ApiOperation, ApiTags } from '@nestjs/swagger'
+import { User } from 'src/common/entities/user.entity'
 
+@ApiTags('User')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
+  @ApiOperation({
+    summary: 'Create User'
+  })
+  async create(
+    @Body() createUserDto: CreateUserDto
+  ): Promise<User> {
     return this.userService.create(createUserDto)
   }
 
   @Get()
-  findAll() {
+  @ApiOperation({
+    summary: 'Get Users'
+  })
+  async findAll(): Promise<User[]> {
     return this.userService.findAll()
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id)
+  @Get(':username')
+  @ApiOperation({
+    summary: 'Get User'
+  })
+  async findOne(
+    @Param('username') username: string
+  ): Promise<User> {
+    return this.userService.findOne(username)
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto)
+  @Patch(':username')
+  @ApiOperation({
+    summary: 'Update User'
+  })
+  async update(
+    @Param('username') username: string,
+    @Body() updateUserDto: UpdateUserDto
+  ): Promise<User> {
+    return this.userService.update(username, updateUserDto)
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id)
+  @Delete(':username')
+  @ApiOperation({
+    summary: 'Remove User'
+  })
+  async remove(
+    @Param('username') username: string
+  ): Promise<User> {
+    return this.userService.remove(username)
   }
 }
