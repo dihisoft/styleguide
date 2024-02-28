@@ -20,7 +20,7 @@
     - [Spaces](#spaces)
     - [Semicolons](#semicolons)
     - [Array](#array)
-    - [`==` or `===`](#or)
+    - [`==` or `===`](#-or-)
 - [3. NestJS](#3-nestjs)
   - [3-1. 디렉토리 구조](#3-1-디렉토리-구조)
 
@@ -242,14 +242,14 @@
 
 - #### Quotes
   - 큰따옴표(`"`)보다 작은따옴표(`'`)를 사용한다.
-  - 문자열이 변수와 함께 표현되는 경우 back tick (``\``)을 사용한다.
+  - 문자열이 변수와 함께 표현되는 경우 back tick (`` ` ``)을 사용한다.
 
     ```ts
     const str1 = 'World!'
     const str2 = `Hello ${str1}` // Hello World!
     ```
 
-  - 문자열을 여러줄로 표현하는 경우 back tick (``\``)을 사용한다.
+  - 문자열을 여러줄로 표현하는 경우 back tick (`` ` ``)을 사용한다.
 
     ```ts
     const str = `line1 line1 line1 line1
@@ -277,8 +277,8 @@
   - 배열을 복사하거나 확장할 때 spread 연산자를 사용한다.
 
     ```ts
-    const oldArray = [1, 2, 3];
-    const newArray = [...oldArray, 4, 5]; // [1, 2, 3, 4, 5]
+    const oldArray = [1, 2, 3]
+    const newArray = [...oldArray, 4, 5] // [1, 2, 3, 4, 5]
     ```
 
 - #### `==` or `===`
@@ -286,13 +286,13 @@
 
     **Bad**
     ```ts
-    if (foo == 100) {
+    if (foo1 == 100 && foo2 != 200) {
       
     }
     ```
     **Good**
     ```ts
-    if (foo === 100) {
+    if (foo1 === 100 && foo2 !== 200) {
 
     }
     ```
