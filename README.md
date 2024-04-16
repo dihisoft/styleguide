@@ -13,15 +13,27 @@
   <br/>
 
 # 주석
+  ## 주석 규칙
+  - VSCode의 plugin Comment Anchors 규칙을 따른다.
+  - 불필요한 주석을 사용하지 않는다.
+  - https://github.com/StarlaneStudios/vscode-comment-anchors
 
-- VSCode의 plugin Comment Anchors 규칙을 따른다.
-- 불필요한 주석을 사용하지 않는다.
-- https://github.com/StarlaneStudios/vscode-comment-anchors
+      <img width="600" src="https://github.com/dihisoft/styleguide/assets/138173291/6c35b41b-95fc-4835-a1d2-4a9a61ded345" />
 
-    <img width="600" src="https://github.com/dihisoft/styleguide/assets/138173291/6c35b41b-95fc-4835-a1d2-4a9a61ded345" />
-
-- // 를 입력하면 자동완성으로 나오는 형태를 사용한다.
-  <img width="600" src="https://github.com/dihisoft/styleguide/assets/138173291/ddecd688-2b92-45fe-8c6e-e57e3e7dc418" />
+  - // 를 입력하면 자동완성으로 나오는 형태를 사용한다.
+    <img width="600" src="https://github.com/dihisoft/styleguide/assets/138173291/ddecd688-2b92-45fe-8c6e-e57e3e7dc418" />
+  
+  ## TODO 주석 활용 예시
+  - 프론트엔드에서 **서버 작업을 기다리는 부분**은 아래와 같이 TODO에 서버 작업과 관련된 지라 티켓 이름을 기록한다.
+  - TODO를 검색해서 지라 티켓 이름을 확인한 후, 지라에서 해당 티켓의 작업상태를 편하게 확인하여 빠르게 대응할 수 있다.
+  - **// TODO {[티켓이름]} {내용}**
+    
+    ```kotlin
+    fun getUserList() {
+        // TODO [DH-160] 사용자 리스트 가져오기 API 개발 완료되면 기능 추가해야함
+    
+    }
+    ```
 
 # Dihisoft Git Rule
 
