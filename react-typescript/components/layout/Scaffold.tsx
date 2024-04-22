@@ -34,7 +34,7 @@ const BodyLayout = styled.div`
 const BodyBox = styled.div`
   flex: 1;
   margin: 20px 150px;
-  background-color: lightskyblue;
+  background-color: ${p => p.theme.color.bg.primary};
 `;
 
 const FooterBox = styled.div`
