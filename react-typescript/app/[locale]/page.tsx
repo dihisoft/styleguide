@@ -1,6 +1,5 @@
 'use client';
 
-<<<<<<< HEAD
 import {
   createRef,
   useEffect,
@@ -8,14 +7,11 @@ import {
   useRef,
   useState,
 } from 'react';
-=======
->>>>>>> main
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const Layout = styled.div``;
 
-<<<<<<< HEAD
 const ButtonGap = 10;
 const CountButtonWidth = 40; // "+3" 버튼의 너비 (50px) + 간격 (10px)
 
@@ -109,17 +105,11 @@ const Home = () => {
     };
   }, []);
 
-=======
-const Home = () => {
-  const { t } = useTranslation(['user', 'common']);
-
->>>>>>> main
   return (
     <Layout>
       {t('user:user-label')}
       <br />
       {t('common:home-screen')}
-<<<<<<< HEAD
 
       <ButtonContainer ref={containerRef}>
         {names
@@ -139,8 +129,6 @@ const Home = () => {
           </CountButton>
         )}
       </ButtonContainer>
-=======
->>>>>>> main
     </Layout>
   );
 };
