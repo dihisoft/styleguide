@@ -34,6 +34,17 @@
     
     }
     ```
+  ## 테스트 코드 작성 시 주석 활용 규칙
+  - 테스트를 위한 임시 코드를 작성할 때는 TEST 주석을 작성한다.
+  - **// TEST**를 검색해서 지라 티켓 이름을 확인한 후, 어떤 기능에 대한 테스트 코드인지 빠르게 확인할 수 있다.
+  - **// TEST {[티켓이름]} {내용}**
+    
+    ```kotlin
+    fun getUserList() {
+        // TEST [DH-160] Fake User Repository를 만들어서 테스트 진행 중
+        val userRepository = FakeUserRepository()
+    }
+    ```
 
 # Dihisoft Git Rule
 
